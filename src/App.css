@@ -1,0 +1,156 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Main Chat Container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 1000px;
+  height: 90vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Chat Messages */
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.message.user {
+  background-color: #dcfce7;
+  align-self: flex-end;
+  color: #065f46;
+}
+
+.message.ai {
+  background-color: #f3f4f6;
+  align-self: flex-start;
+  color: #111827;
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-area input:focus {
+  border-color: #3b82f6;
+}
+
+.input-area button {
+  margin-left: 12px;
+  padding: 12px 20px;
+  background-color: #3b8af6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-area button:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.input-area button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* Loading Animation */
+.message.ai em {
+  display: inline-block;
+  font-style: normal;
+  position: relative;
+  color: #6b7280;
+}
+
+.message.ai em::after {
+  content: "...";
+  display: inline-block;
+  animation: dots 1s steps(3, end) infinite;
+  margin-left: 4px;
+}
+
+@keyframes dots {
+  0% {
+    content: "";
+  }
+
+  33% {
+    content: ".";
+  }
+
+  66% {
+    content: "..";
+  }
+
+  100% {
+    content: "...";
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .chat-container {
+    height: 100vh;
+    border-radius: 0;
+    max-width: 100%;
+  }
+
+  .input-area {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-area button {
+    width: 100%;
+    margin-left: 0;
+  }
+}
